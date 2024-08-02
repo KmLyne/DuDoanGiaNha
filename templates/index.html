@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dự đoán giá nhà Boston</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e9ecef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        div {
+            margin-bottom: 15px;
+        }
+        label {
+            margin-bottom: 5px;
+            display: block;
+            color: #666;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 4px 0;
+            box-sizing: border-box;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+        button {
+            background-color: #44cdc7;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+            
+        }
+        h3 {
+            color: green;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Dự đoán giá nhà Boston</h2>
+        <form action="/predict" method="post">
+            <div>
+                <label for="RM">Số phòng trung bình (RM):</label>
+                <input type="text" id="RM" name="RM" required>
+            </div>
+            <div>
+                <label for="PTRATIO">Tỷ lệ học sinh/giáo viên (PTRATIO):</label>
+                <input type="text" id="PTRATIO" name="PTRATIO" required>
+            </div>
+            <div>
+                <label for="LSTAT">Phần trăm dân số có trình độ thấp (LSTAT):</label>
+                <input type="text" id="LSTAT" name="LSTAT" required>
+            </div>
+            <button type="submit">Dự đoán</button>
+        </form>
+        {% if prediction_text %}
+            <h3>{{ prediction_text }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
